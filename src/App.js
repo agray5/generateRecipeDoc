@@ -7,22 +7,33 @@ import RecipeForm from "./RecipeForm/index"
 class App extends Component {
 
 
+  constructor(props) {
+    super(props);
+    this.state = {values: {}};
+
+    this.handleChange.bind(this);
+  }
+
+  handleChange (event) {
+    this.setState({values: {...this.state.values, [event.target.id]: event.target.value}})
+  }
+
   render() {
     return (
       <div>
-        <RecipeForm />
+        <RecipeForm values={this.state.values} handleChange={this.handleChange.bind(this)} />
         <p>
-          <button onClick={generateDocument}>Generate CV with docx!</button>
+          <button onClick={generateDocument.bind(this, this.state.values)}>Generate CV with docx!</button>
         </p>
       </div >
     );
   }
 }
 
-async function generateDocument() {
+async function generateDocument(docValues) {
   const file = await fetch(process.env.PUBLIC_URL + "/temp.docx");
   const data = await file.arrayBuffer();
-  onTemplateChosen(data);
+  onTemplateChosen(data, docValues);
 }
 
 function readFileAsString(file) {
@@ -38,8 +49,9 @@ function readFileAsString(file) {
   reader.readAsArrayBuffer(file);
 }
 
-const onTemplateChosen = async (text) => {
+const onTemplateChosen = async (text, data) => {
   const template = text;
+  console.log("Data", data)
   const report = await createReport({
     template,
     data: {
@@ -48,6 +60,7 @@ const onTemplateChosen = async (text) => {
         const data = dataUrl.slice('data:image/gif;base64,'.length);
         return { width: 6, height: 6, data, extension: '.gif' };
       },
+      ...data
     },
     cmdDelimiter: ['{', '}'],
     additionalJsContext: {

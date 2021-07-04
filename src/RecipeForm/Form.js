@@ -12,7 +12,7 @@ class RecipeForm extends React.Component {
 
 
   render() {
-    const { classes, handleChange } = this.props;
+    const { classes, handleChange, values } = this.props;
 
     return (
       <form className={classes.root}>
@@ -24,24 +24,36 @@ class RecipeForm extends React.Component {
         >
           <Grid item>
             <FormControl>
-              <InputLabel htmlFor="recipe-title">Recipe Title</InputLabel>
-              <Input id="recipe-title" onChange={handleChange} />
+              <InputLabel htmlFor="title">Recipe Title</InputLabel>
+              <Input id="title" onChange={handleChange} value={values["title"]}/>
             </FormControl>
           </Grid>
           <Grid item>
             <FormControl>
-              <InputLabel htmlFor="recipe-type">Recipe Type</InputLabel>
-              <Input id="recipe-type" onChange={handleChange} />
+              <InputLabel htmlFor="type">Recipe Type</InputLabel>
+              <Input id="type" onChange={handleChange} value={values["type"]} />
             </FormControl>
           </Grid>
           <Grid item>
             <TextField
-              id="recipe-desc"
+              id="desc"
               label="Recipe Description"
               rows={4}
               multiline
               onChange={handleChange}
               variant="outlined"
+              value={values["desc"]}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="ing"
+              label="Recipe Ingrediants"
+              rows={4}
+              multiline
+              onChange={handleChange}
+              variant="outlined"
+              value={values["ing"]}
             />
           </Grid>
         </Grid>

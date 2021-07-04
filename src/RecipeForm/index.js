@@ -14,7 +14,7 @@ class RecipeForm extends React.Component {
 
 
   render() {
-    const { classes } = this.props;
+    const { classes, ...rest } = this.props;
     return(
       <Grid
       container
@@ -23,7 +23,7 @@ class RecipeForm extends React.Component {
       alignItems="center"
     >
       <Card className={classes.card}>
-        <Form />
+        <Form {...rest}/>
       </Card>
     </Grid>
     );
