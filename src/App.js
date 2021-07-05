@@ -1,5 +1,6 @@
 import { Component } from "react";
 import './App.css';
+import { Container } from '@material-ui/core';
 import { saveAs } from "file-saver";
 import createReport from 'docx-templates';
 import RecipeForm from "./RecipeForm/index"
@@ -26,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <RecipeForm
           values={this.state.values}
           handleChange={this.handleChange.bind(this)}
@@ -34,7 +35,7 @@ class App extends Component {
         <p>
           <button onClick={generateDocument.bind(this, this.state.values)}>Generate CV with docx!</button>
         </p>
-      </div >
+      </Container>
     );
   }
 }

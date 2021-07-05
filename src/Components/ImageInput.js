@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    width: 445.75,
+    width: "calc(100%-20px)",
     padding: 20,
     borderWidth: 2,
     borderRadius: 2,

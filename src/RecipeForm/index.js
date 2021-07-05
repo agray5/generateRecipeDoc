@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   card: {
-    marginTop: "4rem",
+    width: "100%"
   }
 });
 
