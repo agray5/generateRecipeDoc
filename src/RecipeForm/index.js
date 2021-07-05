@@ -79,14 +79,11 @@ const onTemplateChosen = async (text, data) => {
     },
     additionalJsContext: {
       img: (options) => {
-        console.log("HELLO")
         const { maxWidth } = options;
         let img = data.img;
-        console.log("before img", img)
         if (maxWidth && img && img.width > maxWidth) {
           img =  {...data.img, ...resize({...data.img, maxWidth})}
         }
-        console.log("img", img)
         return img
       }
     },
