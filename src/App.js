@@ -9,7 +9,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {values: {}};
+    this.state = {values: {title: "Hot Dog", type: "starter", ing: "Hot Dog", instructions: "Boil\nCook", desc: "This is a description"}};
 
     this.handleChange.bind(this);
   }
@@ -49,9 +49,10 @@ function readFileAsString(file) {
   reader.readAsArrayBuffer(file);
 }
 
+// Create downloadable docx
 const onTemplateChosen = async (text, data) => {
   const template = text;
-  console.log("Data", data)
+  console.log("Data", parseData(data))
   const report = await createReport({
     template,
     data: {
@@ -60,7 +61,7 @@ const onTemplateChosen = async (text, data) => {
         const data = dataUrl.slice('data:image/gif;base64,'.length);
         return { width: 6, height: 6, data, extension: '.gif' };
       },
-      ...data
+      ...parseData(data)
     },
     cmdDelimiter: ['{', '}'],
     additionalJsContext: {
@@ -75,5 +76,16 @@ const onTemplateChosen = async (text, data) => {
   saveAs(saveable, "report.docx")
 };
 
+// Process recipe data from form
+const parseData = (data) => {
+  const output = JSON.parse(JSON.stringify(data));
+
+  // Turn steps into an array
+  if(output.instructions) {
+    output.instructions = output.instructions.split(/\r?\n/).map(text => ({text: text}));
+  }
+
+  return output;
+}
 
 export default App;

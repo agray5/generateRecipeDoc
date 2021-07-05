@@ -1,6 +1,7 @@
 import React from "react"
 import { FormControl, InputLabel, Input, TextField, Grid } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
+import ImageInput from "../Components/ImageInput"
 
 const styles = theme => ({
   root: {
@@ -14,8 +15,12 @@ class RecipeForm extends React.Component {
   render() {
     const { classes, handleChange, values } = this.props;
 
+    const imageUpdload = (files) => {
+console.log(files);
+    }
     return (
       <form className={classes.root}>
+        <ImageInput resolve={imageUpdload} />
         <Grid
           container
           direction="column"
@@ -54,6 +59,18 @@ class RecipeForm extends React.Component {
               onChange={handleChange}
               variant="outlined"
               value={values["ing"]}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="instructions"
+              label="Recipe instructions"
+              rows={4}
+              multiline
+              onChange={handleChange}
+              variant="outlined"
+              value={values["instructions"]}
+              helperText="Put each step on a new line."
             />
           </Grid>
         </Grid>
