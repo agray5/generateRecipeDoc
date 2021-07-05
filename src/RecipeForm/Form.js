@@ -1,5 +1,5 @@
 import React from "react"
-import { FormControl, InputLabel, Input, TextField, Grid } from '@material-ui/core';
+import { FormControl, InputLabel, Input, TextField, Grid, Button } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
 import ImageInput from "../Components/ImageInput"
 
@@ -13,17 +13,18 @@ class RecipeForm extends React.Component {
 
 
   render() {
-    const { classes, handleChange, handleImg, values } = this.props;
+    const { classes, handleChange, handleImg, handleSubmit, values } = this.props;
 
     return (
-      <form className={classes.root}>
+      <form className={classes.root} onSubmit={handleSubmit}>
         <Grid
           container
           justify="center"
-          spacing={4}
+          spacing={5}
         >
           <Grid item xs={4} >
             <ImageInput resolve={handleImg} />
+            <p>Can't generate doc without image</p>
           </Grid>
           <Grid
             container
@@ -34,15 +35,15 @@ class RecipeForm extends React.Component {
             xs={8} 
           >
             <Grid item>
-              <FormControl>
+              <FormControl fullWidth>
                 <InputLabel htmlFor="title">Recipe Title</InputLabel>
-                <Input id="title" onChange={handleChange} value={values["title"]} />
+                <Input id="title" onChange={handleChange} value={values["title"]}  fullWidth/>
               </FormControl>
             </Grid>
             <Grid item>
-              <FormControl>
+              <FormControl fullWidth>
                 <InputLabel htmlFor="type">Recipe Type</InputLabel>
-                <Input id="type" onChange={handleChange} value={values["type"]} />
+                <Input id="type" onChange={handleChange} value={values["type"]} fullWidth/>
               </FormControl>
             </Grid>
             <Grid item>
@@ -54,6 +55,7 @@ class RecipeForm extends React.Component {
                 onChange={handleChange}
                 variant="outlined"
                 value={values["desc"]}
+                fullWidth
               />
             </Grid>
             <Grid item>
@@ -65,6 +67,7 @@ class RecipeForm extends React.Component {
                 onChange={handleChange}
                 variant="outlined"
                 value={values["ing"]}
+                fullWidth
               />
             </Grid>
             <Grid item>
@@ -77,10 +80,12 @@ class RecipeForm extends React.Component {
                 variant="outlined"
                 value={values["instructions"]}
                 helperText="Put each step on a new line."
+                fullWidth
               />
             </Grid>
           </Grid>
         </Grid>
+        <Button type="submit" value="Submit" color="primary" variant="contained">Generate recipe doc</Button>
       </form>
     );
   }
