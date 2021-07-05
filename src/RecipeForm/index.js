@@ -18,10 +18,16 @@ class RecipeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { values: { title: "", type: "", ing: "", instructions: "", desc: "" } };
+    this.setDefaultImg();
   }
 
   handleChange(event) {
     this.setState({ values: { ...this.state.values, [event.target.id]: event.target.value } })
+  }
+
+  async setDefaultImg() {
+    const defaultImg = await fetch(process.env.PUBLIC_URL + "/default.png");
+    this.handleImg([defaultImg])
   }
 
   async handleImg(files) {
@@ -71,7 +77,20 @@ const onTemplateChosen = async (text, data) => {
     data: {
       ...parseData(data)
     },
-    cmdDelimiter: ['{', '}'],
+    additionalJsContext: {
+      img: (options) => {
+        console.log("HELLO")
+        const { maxWidth } = options;
+        let img = data.img;
+        console.log("before img", img)
+        if (maxWidth && img && img.width > maxWidth) {
+          img =  {...data.img, ...resize({...data.img, maxWidth})}
+        }
+        console.log("img", img)
+        return img
+      }
+    },
+    cmdDelimiter: ['{{', '}}'],
   });
   const saveable = new Blob([report], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
   saveAs(saveable, "report.docx")
@@ -88,6 +107,16 @@ const parseData = (data) => {
   else output.instructions = [""];
 
   return output;
+}
+
+const resize = (data) => {
+  const { width, height, maxWidth } = data;
+
+  // calc
+  let widthRatio = maxWidth / width;
+
+  // output
+  return ({ width: width * widthRatio, height: height *  widthRatio})
 }
 
 export default withStyles(styles, { withTheme: true })(RecipeForm);
