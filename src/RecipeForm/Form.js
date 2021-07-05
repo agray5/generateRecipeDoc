@@ -22,7 +22,7 @@ class RecipeForm extends React.Component {
           justify="center"
           spacing={5}
         >
-          <Grid item xs={4} >
+          <Grid item xs={12} lg={4} >
             <ImageInput resolve={handleImg} />
             <p>Can't generate doc without image</p>
           </Grid>
@@ -32,7 +32,8 @@ class RecipeForm extends React.Component {
             direction="column"
             justify="center"
             spacing={3}
-            xs={8} 
+            lg={8}
+            xs={12} 
           >
             <Grid item>
               <FormControl fullWidth>
