@@ -9,19 +9,28 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {values: {title: "Hot Dog", type: "starter", ing: "Hot Dog", instructions: "Boil\nCook", desc: "This is a description"}};
+    this.state = { values: { title: "", type: "starter", ing: "Hot Dog", instructions: "Boil\nCook", desc: "This is a description" } };
 
     this.handleChange.bind(this);
   }
 
-  handleChange (event) {
-    this.setState({values: {...this.state.values, [event.target.id]: event.target.value}})
+  handleChange(event) {
+    this.setState({ values: { ...this.state.values, [event.target.id]: event.target.value } })
+  }
+
+  async handleImg(files) {
+    const data = await files[0].arrayBuffer();
+    const {width, height} = await getHeightAndWidthFromDataUrl(files[0].previewUrl);
+    this.setState({ values: { ...this.state.values, img: {data: data, extension: "."+files[0].name.split('.').pop(), width: width * 0.026458, height: height * 0.026458} }})
   }
 
   render() {
     return (
       <div>
-        <RecipeForm values={this.state.values} handleChange={this.handleChange.bind(this)} />
+        <RecipeForm
+          values={this.state.values}
+          handleChange={this.handleChange.bind(this)}
+          handleImg={this.handleImg.bind(this)} />
         <p>
           <button onClick={generateDocument.bind(this, this.state.values)}>Generate CV with docx!</button>
         </p>
@@ -78,14 +87,25 @@ const onTemplateChosen = async (text, data) => {
 
 // Process recipe data from form
 const parseData = (data) => {
-  const output = JSON.parse(JSON.stringify(data));
+  const output = Object.assign({}, data);
 
   // Turn steps into an array
-  if(output.instructions) {
-    output.instructions = output.instructions.split(/\r?\n/).map(text => ({text: text}));
+  if (output.instructions) {
+    output.instructions = output.instructions.split(/\r?\n/).map(text => ({ text: text }));
   }
 
   return output;
 }
+
+const getHeightAndWidthFromDataUrl = dataURL => new Promise(resolve => {
+  const img = new Image()
+  img.onload = () => {
+    resolve({
+      height: img.height,
+      width: img.width
+    })
+  }
+  img.src = dataURL
+})
 
 export default App;

@@ -13,14 +13,10 @@ class RecipeForm extends React.Component {
 
 
   render() {
-    const { classes, handleChange, values } = this.props;
+    const { classes, handleChange, handleImg, values } = this.props;
 
-    const imageUpdload = (files) => {
-console.log(files);
-    }
     return (
       <form className={classes.root}>
-        <ImageInput resolve={imageUpdload} />
         <Grid
           container
           direction="column"
@@ -28,9 +24,12 @@ console.log(files);
           spacing={4}
         >
           <Grid item>
+            <ImageInput resolve={handleImg} />
+          </Grid>
+          <Grid item>
             <FormControl>
               <InputLabel htmlFor="title">Recipe Title</InputLabel>
-              <Input id="title" onChange={handleChange} value={values["title"]}/>
+              <Input id="title" onChange={handleChange} value={values["title"]} />
             </FormControl>
           </Grid>
           <Grid item>
