@@ -1,7 +1,7 @@
 import React from "react"
 import { FormControl, InputLabel, Input, TextField, Grid, Button } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
-import { ImageInput } from "../components/index"
+import { ImageInput } from "components/index"
 
 const styles = theme => ({
   root: {

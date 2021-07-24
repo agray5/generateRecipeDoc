@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { saveAs } from "file-saver";
 import createReport from 'docx-templates';
 import Form from "./Form"
-import utils from "../utils/index"
+import utils from "utils/index"
 
 const styles = theme => ({
   card: {
