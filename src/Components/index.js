@@ -1,2 +1,2 @@
 export {default as ImageInput} from './ImageInput';
-export {default as ThemeSwitch} from './ThemeSwitch';
+export {ThemeSwitch} from './ThemeSwitch';
