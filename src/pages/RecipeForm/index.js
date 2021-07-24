@@ -13,7 +13,7 @@ const styles = theme => ({
 });
 
 
-class RecipeForm extends React.Component {
+class RecipeFormContainer extends React.Component {
 
   constructor(props) {
     super(props);
@@ -116,4 +116,4 @@ const resize = (data) => {
   return ({ width: width * widthRatio, height: height *  widthRatio})
 }
 
-export default withStyles(styles, { withTheme: true })(RecipeForm);
+export default withStyles(styles, { withTheme: true })(RecipeFormContainer);
