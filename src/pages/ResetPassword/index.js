@@ -1,0 +1,1 @@
+export {ResetPasswordConatiner as default} from "./ResetPasswordConatiner";

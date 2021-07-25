@@ -1,6 +1,6 @@
 import React from "react";
 import  AppBar  from "./AppBar";
-import  Drawer  from "./Drawer"
+import  Drawer  from "./Drawer";
 
 function Nav(props) {
 

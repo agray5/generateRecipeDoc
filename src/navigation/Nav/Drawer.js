@@ -61,11 +61,13 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
-      <Divider />
       <List>
         {Item({ Icon: <DashboardIcon />, text: "Dashboard", to: ROOT })}
         {Item({ Icon: <EmojiFoodBeverageIcon />, text: "Recipe Creator", to: RECIPE })}
+      </List>
+      <Divider />
+      <List>
+        {Item({ Icon: <DashboardIcon />, text: "Log In", to: LOGIN })}
       </List>
     </div>
   );

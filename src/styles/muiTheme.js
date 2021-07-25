@@ -36,7 +36,7 @@
    palette: {
      type: 'light',
      primary: {
-       main: "#4bffa5",
+       main: "#e75480",
      },
      secondary: {
        main: "#040f3d",

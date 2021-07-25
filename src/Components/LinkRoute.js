@@ -6,20 +6,22 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core'
+import { Link as RouterLink } from 'react-router-dom'
+import { makeStyles, Link } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     linkWrapper: {
         textDecoration: "none",
-        color: "inherit"
+        '&:hover': {
+            textDecoration: "none",
+        }
     }
 }))
 
 export const LinkRoute = props => {
     const classes = useStyles();
     return (
-        <Link {...props} className={classes.linkWrapper} >
+        <Link {...props} component={RouterLink} className={classes.linkWrapper} >
             {props.children}
         </Link>
     )
