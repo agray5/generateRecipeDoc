@@ -24,10 +24,10 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={darkState ? dark() : light()}>
-        <ThemeSwitch
+        {/*<ThemeSwitch
           darkState={darkState}
           handleThemeChange={handleThemeChange}
-        />
+        />*/}
         <ProvideAuth>
           <BrowserRouter>
             <RouterConfig />

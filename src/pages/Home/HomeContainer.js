@@ -8,7 +8,6 @@ import { NavLinks } from "./components/NavLinks";
 export function HomeContainer() {
   return (
     <div>
-      <NavLinks />
       <HomeView title="Home" />
     </div>
   );
