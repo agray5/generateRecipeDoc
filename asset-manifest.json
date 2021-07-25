@@ -1,22 +1,26 @@
 {
   "files": {
     "main.css": "/generateRecipeDoc/static/css/main.839bca90.chunk.css",
-    "main.js": "/generateRecipeDoc/static/js/main.2d2a5da7.chunk.js",
-    "main.js.map": "/generateRecipeDoc/static/js/main.2d2a5da7.chunk.js.map",
-    "runtime-main.js": "/generateRecipeDoc/static/js/runtime-main.b9199fca.js",
-    "runtime-main.js.map": "/generateRecipeDoc/static/js/runtime-main.b9199fca.js.map",
-    "static/js/2.b37f0464.chunk.js": "/generateRecipeDoc/static/js/2.b37f0464.chunk.js",
-    "static/js/2.b37f0464.chunk.js.map": "/generateRecipeDoc/static/js/2.b37f0464.chunk.js.map",
-    "static/js/3.b62bb55f.chunk.js": "/generateRecipeDoc/static/js/3.b62bb55f.chunk.js",
-    "static/js/3.b62bb55f.chunk.js.map": "/generateRecipeDoc/static/js/3.b62bb55f.chunk.js.map",
+    "main.js": "/generateRecipeDoc/static/js/main.aabca43b.chunk.js",
+    "main.js.map": "/generateRecipeDoc/static/js/main.aabca43b.chunk.js.map",
+    "runtime-main.js": "/generateRecipeDoc/static/js/runtime-main.32f2299b.js",
+    "runtime-main.js.map": "/generateRecipeDoc/static/js/runtime-main.32f2299b.js.map",
+    "static/css/2.f5ee4ec2.chunk.css": "/generateRecipeDoc/static/css/2.f5ee4ec2.chunk.css",
+    "static/js/2.8ef61811.chunk.js": "/generateRecipeDoc/static/js/2.8ef61811.chunk.js",
+    "static/js/2.8ef61811.chunk.js.map": "/generateRecipeDoc/static/js/2.8ef61811.chunk.js.map",
+    "static/js/3.13690e2c.chunk.js": "/generateRecipeDoc/static/js/3.13690e2c.chunk.js",
+    "static/js/3.13690e2c.chunk.js.map": "/generateRecipeDoc/static/js/3.13690e2c.chunk.js.map",
     "index.html": "/generateRecipeDoc/index.html",
+    "static/css/2.f5ee4ec2.chunk.css.map": "/generateRecipeDoc/static/css/2.f5ee4ec2.chunk.css.map",
     "static/css/main.839bca90.chunk.css.map": "/generateRecipeDoc/static/css/main.839bca90.chunk.css.map",
-    "static/js/2.b37f0464.chunk.js.LICENSE.txt": "/generateRecipeDoc/static/js/2.b37f0464.chunk.js.LICENSE.txt"
+    "static/js/2.8ef61811.chunk.js.LICENSE.txt": "/generateRecipeDoc/static/js/2.8ef61811.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/generateRecipeDoc/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.b9199fca.js",
-    "static/js/2.b37f0464.chunk.js",
+    "static/js/runtime-main.32f2299b.js",
+    "static/css/2.f5ee4ec2.chunk.css",
+    "static/js/2.8ef61811.chunk.js",
     "static/css/main.839bca90.chunk.css",
-    "static/js/main.2d2a5da7.chunk.js"
+    "static/js/main.aabca43b.chunk.js"
   ]
 }
