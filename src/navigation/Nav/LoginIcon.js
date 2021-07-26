@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box , Avatar} from '@material-ui/core';
+import { Box , Avatar, Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useAuth } from "navigation/Auth/ProvideAuth";
 import { LinkRoute } from "components/LinkRoute";
@@ -21,7 +21,14 @@ function LoginIcon(props) {
           <Avatar></Avatar>
         ) :
         (
-          <LinkRoute to={LOGIN}>Login/Register</LinkRoute>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item>
+              <Avatar></Avatar>
+            </Grid>
+            <Grid item>
+              <LinkRoute to={LOGIN}>Login/Register</LinkRoute>
+            </Grid>
+          </Grid>
         )
       }
     </Box>

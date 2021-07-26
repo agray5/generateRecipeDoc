@@ -45,4 +45,12 @@
    //common styles.
  //   global
  }))
- 
+
+ export const appbar = ()=> (createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: "#fff",
+    },
+  }
+ }))

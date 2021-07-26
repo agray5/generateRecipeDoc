@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Typography, Toolbar, AppBar, IconButton, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from "@material-ui/core";
+import { dark, light, appbar } from "styles/muiTheme";
 import LoginIcon from './LoginIcon';
 
 const drawerWidth = 240;
@@ -27,7 +29,8 @@ function TopBar(props) {
   const classes = useStyles();
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <ThemeProvider theme={appbar()}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -46,6 +49,7 @@ function TopBar(props) {
             <LoginIcon />
           </Box>
         </Toolbar>
+        </ThemeProvider>
       </AppBar>
   );
 }

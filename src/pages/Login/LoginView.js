@@ -1,19 +1,22 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import { 
+  Avatar, 
+  FormControlLabel, 
+  TextField, 
+  Checkbox, 
+  Grid, 
+  Typography, 
+  Container,  
+  FormControl,
+  FormHelperText
+} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { LinkRoute } from "components/LinkRoute";
+import LoadingButton from "components/LoadingButton";
 import { ROOT, DASHBOARD, RECIPE, LOGIN, RESET_PASSWORD, SIGNUP } from "navigation/CONSTANTS";
+
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,14 +36,29 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  error: {
+    display: "flex",
+    "& > *": {
+      textAlign: "center"
+    }
+  }
 }));
 
-export default function Login() {
+export default function Login({
+  isLoading, 
+  handleLogin, 
+  error, 
+  email, 
+  password, 
+  remember, 
+  setRemember,
+  setEmail, 
+  setPassword
+}) {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -49,6 +67,9 @@ export default function Login() {
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
+          <FormControl className={classes.error} error>
+            <FormHelperText>{error}</FormHelperText>
+          </FormControl>
           <TextField
             variant="outlined"
             margin="normal"
@@ -59,6 +80,8 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={e => setEmail(e.target.value)}
+            value={email}
           />
           <TextField
             variant="outlined"
@@ -70,20 +93,25 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
+            value={password}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={
+              <Checkbox value="remember" checked={remember} onChange={e => setRemember(e.target.checked)} color="primary" />
+            }
             label="Remember me"
           />
-          <Button
-            type="submit"
+          <LoadingButton
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            isLoading={isLoading}
+            onClick={handleLogin}
           >
             Sign In
-          </Button>
+          </LoadingButton>
           <Grid container>
             <Grid item xs>
               <LinkRoute to={RESET_PASSWORD}>

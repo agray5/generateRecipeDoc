@@ -4,7 +4,7 @@ import { getUserDetails } from "services";
 
 export function useProvideAuth() {
   const [user, setUser] = useState(null);
-  // Firebase auth example code (ref: https://usehooks.com/useAuth/)
+
    const signin = (email, password) => {
      return firebase
        .auth()
@@ -23,9 +23,30 @@ export function useProvideAuth() {
        });
    };
 
+   const signup = (email, password) => {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        setUser(response.user);
+        return response.user;
+    });
+   }
+
+   const setPersistance = (persistance) => {
+    return firebase
+       .auth()
+       .setPersistence(persistance)
+   };
+
+   const PERSISTANCE = firebase.auth.Auth.Persistence;
+
   return {
     user,
     signin,
     signout,
+    signup,
+    setPersistance,
+    PERSISTANCE
   };
 }
