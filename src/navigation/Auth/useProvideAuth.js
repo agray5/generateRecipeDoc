@@ -23,13 +23,15 @@ export function useProvideAuth() {
        });
    };
 
-   const signup = (email, password) => {
+   const signup = (name, email, password) => {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
         setUser(response.user);
-        return response.user;
+        return response.user.updateProfile({
+          displayName: name
+      }).then(() => (response.user));
     });
    }
 
