@@ -18,7 +18,7 @@ export function LoginContainer() {
   const handleLogin = async () => {
     setIsLoading(true);
 
-    if(remember) {
+    if(!remember) {
       await auth.setPersistance(auth.PERSISTANCE.SESSION);
     }
 

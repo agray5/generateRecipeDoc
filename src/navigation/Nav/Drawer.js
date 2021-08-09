@@ -46,33 +46,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Item({ Icon, text, onClick, to, linkProps, children }) {
+  return (
+    <LinkRoute to={to} {...linkProps} >
+      <ItemInner Icon={Icon} text={text} onClick={onClick} children={children}/>
+    </LinkRoute>
+  )
+}
+
+function ItemInner({ Icon, text, onClick, children }) {
+  return (
+    <ListItem button key={text} onClick={onClick}>
+      <ListItemIcon>{children}</ListItemIcon>
+      <ListItemText primary={text} />
+    </ListItem>
+  )
+}
+
 function ResponsiveDrawer(props) {
   const { window, mobileOpen, handleDrawerToggle } = props;
   const classes = useStyles();
   const theme = useTheme();
   const auth = useAuth();
-  
-
-  const Item = ({ Icon, text, to }) => (
-    <LinkRoute to={to}>
-      <ListItem button key={text}>
-        <ListItemIcon>{Icon}</ListItemIcon>
-        <ListItemText primary={text} />
-      </ListItem>
-    </LinkRoute>
-  )
 
   const drawer = (
     <div>
       <List>
-        {Item({ Icon: <DashboardIcon />, text: "Dashboard", to: ROOT })}
-        {Item({ Icon: <EmojiFoodBeverageIcon />, text: "Recipe Creator", to: RECIPE })}
+        <Item text="Dashboard" to={ROOT} > <DashboardIcon /> </Item>
+        <Item text="Recipe Creator" to={RECIPE}><EmojiFoodBeverageIcon /></Item>
       </List>
       <Divider />
       <List>
-        { auth.user ?
-          Item({ Icon: <DashboardIcon />, text: "Sign In", to: LOGIN }) :
-          Item({ Icon: <DashboardIcon />, text: "Sign Out", to: LOGIN })
+        {auth.user ?
+          <ItemInner text="Sign Out" onClick={auth.signOut}>  <DashboardIcon /> </ItemInner> :
+          <Item text="Sign In" to={LOGIN}> <DashboardIcon /> </Item>
         }
       </List>
     </div>
