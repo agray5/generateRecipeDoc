@@ -9,8 +9,14 @@ const getHeightAndWidthFromDataUrl = dataURL => new Promise(resolve => {
   img.src = dataURL
 });
 
+const obscureEmail = (email) => {
+  const [name, domain] = email.split('@');
+  return `${name[0]}${new Array(name.length).join('*')}@${domain}`;
+};
+
 const exportDef =  ({
-  getHeightAndWidthFromDataUrl
+  getHeightAndWidthFromDataUrl,
+  obscureEmail
 })
 
 export default exportDef

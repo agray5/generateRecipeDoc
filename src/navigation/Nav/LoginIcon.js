@@ -26,7 +26,7 @@ function LoginIcon(props) {
               <Avatar></Avatar>
             </Grid>
             <Grid item>
-              <LinkRoute to={LOGIN}>Login/Register</LinkRoute>
+              <LinkRoute to={LOGIN}>Sign In/Register</LinkRoute>
             </Grid>
           </Grid>
         )

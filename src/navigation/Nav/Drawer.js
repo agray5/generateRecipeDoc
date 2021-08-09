@@ -15,6 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { LinkRoute } from "components/LinkRoute";
 import { DASHBOARD, LOGIN, RECIPE, AUTH_PAGE1, ROOT } from "navigation/CONSTANTS";
+import { useAuth } from "../Auth/ProvideAuth";
 
 const drawerWidth = 240;
 
@@ -49,6 +50,8 @@ function ResponsiveDrawer(props) {
   const { window, mobileOpen, handleDrawerToggle } = props;
   const classes = useStyles();
   const theme = useTheme();
+  const auth = useAuth();
+  
 
   const Item = ({ Icon, text, to }) => (
     <LinkRoute to={to}>
@@ -67,7 +70,10 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        {Item({ Icon: <DashboardIcon />, text: "Log In", to: LOGIN })}
+        { auth.user ?
+          Item({ Icon: <DashboardIcon />, text: "Sign In", to: LOGIN }) :
+          Item({ Icon: <DashboardIcon />, text: "Sign Out", to: LOGIN })
+        }
       </List>
     </div>
   );

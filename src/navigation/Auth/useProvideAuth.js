@@ -41,6 +41,12 @@ export function useProvideAuth() {
        .setPersistence(persistance)
    };
 
+   const sendPasswordResetEmail = (email) => {
+    return firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+  }
+
    const PERSISTANCE = firebase.auth.Auth.Persistence;
 
   return {
@@ -49,6 +55,7 @@ export function useProvideAuth() {
     signout,
     signup,
     setPersistance,
+    sendPasswordResetEmail,
     PERSISTANCE
   };
 }

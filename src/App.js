@@ -7,7 +7,7 @@ import "fontsource-roboto";
 import { BrowserRouter } from "react-router-dom";
 import { RouterConfig } from "navigation/RouterConfig";
 // MUI Theme
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 import { ThemeSwitch } from "components/ThemeSwitch";
 import { dark, light } from "styles/muiTheme";
 import "./App.css";

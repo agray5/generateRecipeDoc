@@ -15,7 +15,10 @@ import PrivateRoute from "./Auth/PrivateRoute";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  main: {
+    margin: 'auto'
+  }
 }));
 
 export const RouterConfig = () => {
@@ -24,7 +27,7 @@ export const RouterConfig = () => {
   return (
     <Box display="flex">
       <Nav />
-      <div>
+      <div className={classes.main}>
         <div className={classes.toolbar} />
         <Switch>
           {/* List all public routes here */}
